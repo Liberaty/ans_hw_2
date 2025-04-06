@@ -7,6 +7,8 @@
 3. Скачайте [Playbook](./playbook/) из репозитория с домашним заданием и перенесите его в свой репозиторий.
 4. Подготовьте хосты в соответствии с группами из предподготовленного playbook.
 
+![infrastructure.png](https://github.com/Liberaty/ans_hw_2/blob/main/img/infrastructure.png?raw=true)
+
 ## Основная часть
 
 1. Подготовьте свой inventory-файл `prod.yml`.
