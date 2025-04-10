@@ -39,3 +39,6 @@ terraform.rc
 authorized_key.json
 # Own secret vars store.
 personal.auto.tfvars
+
+# Test files
+playbook/test.yml

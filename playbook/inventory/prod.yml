@@ -1,16 +1,16 @@
 ---
 clickhouse:
   hosts:
-    ubuntu-01:
-      ansible_host: 158.160.108.15
+    ubuntu-1:
+      ansible_host: 51.250.9.138
       ansible_connection: ssh
       ansible_user: ubuntu
-      ansible_ssh_private_key_file: ~/.ssh/id_ed25519.pub
+      ansible_ssh_private_key_file: ~/.ssh/id_ed25519
       
 vector:
   hosts:
-    ubuntu-02:
-      ansible_host: 89.169.156.196
+    ubuntu-2:
+      ansible_host: 51.250.8.250
       ansible_connection: ssh
       ansible_user: ubuntu
-      ansible_ssh_private_key_file: ~/.ssh/id_ed25519.pub
+      ansible_ssh_private_key_file: ~/.ssh/id_ed25519
