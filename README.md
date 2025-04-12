@@ -34,8 +34,23 @@
 ![2.5.png](https://github.com/Liberaty/ans_hw_2/blob/main/img/2.5.png?raw=true)
 
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
+
+***Ответ:*** 
+![ССылка на результат](https://github.com/Liberaty/ans_hw_2/blob/main/Other/check.md)
+![2.6.png](https://github.com/Liberaty/ans_hw_2/blob/main/img/2.6.png?raw=true)
+
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
+
+***Ответ:*** 
+![ССылка на результат](https://github.com/Liberaty/ans_hw_2/blob/main/Other/diff-1.md)
+![2.7.png](https://github.com/Liberaty/ans_hw_2/blob/main/img/2.7.png?raw=true)
+
 8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
+
+***Ответ:*** 
+![ССылка на результат](https://github.com/Liberaty/ans_hw_2/blob/main/Other/diff-2.md)
+![2.8.png](https://github.com/Liberaty/ans_hw_2/blob/main/img/2.8.png?raw=true)
+
 9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги. Пример качественной документации ansible playbook по [ссылке](https://github.com/opensearch-project/ansible-playbook). Так же приложите скриншоты выполнения заданий №5-8
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-02-playbook` на фиксирующий коммит, в ответ предоставьте ссылку на него.
 
