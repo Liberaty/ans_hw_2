@@ -142,13 +142,14 @@
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_gid }}"
         backup: true
-      notify: Start vector service
 
     - name: Reload systemd to apply changes
+      become: true
       ansible.builtin.systemd:
         daemon_reload: true
 
     - name: Ensure vector service is enabled and started
+      become: true
       ansible.builtin.systemd:
         name: vector
         enabled: true
