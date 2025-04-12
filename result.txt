@@ -1,0 +1,17 @@
+
+PLAY [Install Clickhouse on Ubuntu] ********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ubuntu-1]
+
+TASK [Check for broken dependencies] *******************************************
+ok: [ubuntu-1]
+
+TASK [Fix dependencies] ********************************************************
+skipping: [ubuntu-1]
+
+TASK [Install dependencies] ****************************************************
+ok: [ubuntu-1]
+
+TASK [Get clickhouse distrib (.deb)] *******************************************
+ok: [ubuntu-1] => (item=clickhouse-client)

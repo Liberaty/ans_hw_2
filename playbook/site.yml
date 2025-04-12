@@ -8,9 +8,17 @@
         name: clickhouse-server
         state: restarted
   tasks:
-    - name: Update apt cache
+    - name: Check for broken dependencies
+      ansible.builtin.command: dpkg --audit
+      register: dpkg_audit
+      changed_when: false
+      failed_when: false
+
+    - name: Fix dependencies
       ansible.builtin.apt:
         update_cache: true
+        state: fixed
+      when: dpkg_audit.stdout != ""
 
     - name: Install dependencies
       ansible.builtin.apt:
@@ -20,7 +28,8 @@
           - curl
         state: present
 
-    - block:
+    - name: Download ClickHouse packages
+      block:
         - name: Get clickhouse distrib (.deb)
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/deb/pool/main/c/{{ item }}/{{ item }}_{{ clickhouse_version }}_all.deb"
@@ -56,9 +65,17 @@
         - "clickhouse-server_{{ clickhouse_version }}_all.deb"
       notify: Start clickhouse service
 
+    - name: Check for broken dependencies
+      ansible.builtin.command: dpkg --audit
+      register: dpkg_audit
+      changed_when: false
+      failed_when: false
+
     - name: Fix dependencies
-      ansible.builtin.shell:
-        cmd: "apt-get install -f -y"
+      ansible.builtin.apt:
+        update_cache: true
+        state: fixed
+      when: dpkg_audit.stdout != ""
 
     - name: Flush handlers
       ansible.builtin.meta: flush_handlers
@@ -83,9 +100,17 @@
         name: vector
         state: restarted
   tasks:
-    - name: Update apt cache
+    - name: Check for broken dependencies
+      ansible.builtin.command: dpkg --audit
+      register: dpkg_audit
+      changed_when: false
+      failed_when: false
+
+    - name: Fix dependencies
       ansible.builtin.apt:
         update_cache: true
+        state: fixed
+      when: dpkg_audit.stdout != ""
 
     - name: Download vector package (.deb)
       ansible.builtin.get_url:
@@ -118,3 +143,13 @@
         group: "{{ ansible_user_gid }}"
         backup: true
       notify: Start vector service
+
+    - name: Reload systemd to apply changes
+      ansible.builtin.systemd:
+        daemon_reload: true
+
+    - name: Ensure vector service is enabled and started
+      ansible.builtin.systemd:
+        name: vector
+        enabled: true
+        state: started
